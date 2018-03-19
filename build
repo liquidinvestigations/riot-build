@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+cd -P -- "$(dirname -- "$0")"
+
 rm -rf riot-web matrix-react-sdk
 
 git clone https://github.com/liquidinvestigations/matrix-react-sdk

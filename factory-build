@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+cd -P -- "$(dirname -- "$0")"
+
+apt-get -qq update > /dev/null
+apt-get install -yqq build-essential git > /dev/null
+curl -sL https://deb.nodesource.com/setup_9.x | bash -
+apt-get install -yqq nodejs > /dev/null
+
+./build

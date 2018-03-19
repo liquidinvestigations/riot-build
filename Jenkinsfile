@@ -9,13 +9,18 @@ node('cloud') {
         sh 'set -x && hostname && uname -a && free -h && df -h'
     }
     deleteDir()
-    checkout scm
+    dir('riot-build') {
+        checkout scm
+    }
     try {
+        stage('CLOUD: Prepare factory') {
+            sh "#!/bin/bash\npython3 <(curl -sL https://github.com/liquidinvestigations/factory/raw/master/install.py) factory"
+        }
         stage('CLOUD: Run the build script') {
-            sh './build'
+            sh './factory/factory run --share riot-build:/mnt/riot-build /mnt/riot-build/factory-build'
         }
         stage('CLOUD: Archive artifact') {
-            archiveArtifacts 'riot-liquid.tar.gz'
+            archiveArtifacts 'riot-build/riot-liquid.tar.gz'
         }
     } finally {
         deleteDir()
