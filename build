@@ -1,9 +1,5 @@
 #!/bin/bash -ex
 
-cd -P -- "$(dirname -- "$0")"
-
-rm -rf riot-web matrix-react-sdk
-
 git clone https://github.com/liquidinvestigations/matrix-react-sdk
 ( cd matrix-react-sdk; git checkout liquid )
 
@@ -27,4 +23,4 @@ git clone https://github.com/vector-im/riot-web
   )
   npm run dist
 )
-mv riot-web/dist/riot-v0.13.5-dirty.tar.gz ./riot-liquid.tar.gz
+mv riot-web/dist/riot-v0.13.5-dirty.tar.gz /tmp/riot.tgz
