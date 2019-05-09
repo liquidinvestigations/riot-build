@@ -14,4 +14,4 @@ npm install
 
 npm run dist
 
-mv riot-web/dist/riot-v0.13.5-dirty.tar.gz /tmp/riot.tgz
+mv riot-web/dist/riot-v0.13.5-dirty.tar.gz ./riot.tgz
