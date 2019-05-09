@@ -1,17 +1,7 @@
 #!/bin/bash -ex
 
-git clone https://github.com/liquidinvestigations/matrix-react-sdk
-( cd matrix-react-sdk; git checkout liquid )
-
 git clone https://github.com/vector-im/riot-web
 ( cd riot-web; git checkout v0.13.5 )
-
-(
-  cd matrix-react-sdk
-  git checkout liquid
-  npm install
-  npm run build
-)
 
 (
   cd riot-web
@@ -23,4 +13,5 @@ git clone https://github.com/vector-im/riot-web
   )
   npm run dist
 )
+
 mv riot-web/dist/riot-v0.13.5-dirty.tar.gz /tmp/riot.tgz
